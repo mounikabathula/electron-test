@@ -62,7 +62,7 @@ function createDefaultWindow() {
   win = new BrowserWindow(
     { width: 800, height: 800 }
   );
-  win.webContents.openDevTools();
+  // win.webContents.openDevTools();
   win.on('closed', () => {
     win = null;
   });
