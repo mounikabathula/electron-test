@@ -76,7 +76,7 @@ autoUpdater.on('checking-for-update', () => {
 autoUpdater.on('update-available', () => {
   console.log("update available");
   
-  mainWindow.webContents.send('update_available');
+  win.webContents.send('update_available');
 });
 autoUpdater.on('update-not-available', (info) => {
   sendStatusToWindow('Update not available.');
@@ -94,7 +94,7 @@ autoUpdater.on('error', (err) => {
 //   sendStatusToWindow('Update downloaded');
 // });
 autoUpdater.on('update-downloaded', () => {
-  mainWindow.webContents.send('update_downloaded');
+  win.webContents.send('update_downloaded');
 });
 app.on('ready', function() {
   // Create the Menu
