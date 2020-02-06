@@ -68,16 +68,23 @@ function createDefaultWindow() {
   return win;
 }
 autoUpdater.on('checking-for-update', () => {
-  sendStatusToWindow('Checking for update...');
+  // sendStatusToWindow('Checking for update...');
+  win.webContents.send('checking-for-update',"Checking for update...");
+
 })
 autoUpdater.on('update-available', (info) => {
-  sendStatusToWindow('Update available.');
+  // sendStatusToWindow('Update available.');
+  win.webContents.send('update-available'," Update available.");
 })
 autoUpdater.on('update-not-available', (info) => {
   sendStatusToWindow('Update not available.');
+  win.webContents.send('update-not-available',"Update not available.");
+
 })
 autoUpdater.on('error', (err) => {
-  sendStatusToWindow('Error in auto-updater. ' + err);
+  // sendStatusToWindow('Error in auto-updater. ' + err);
+  win.webContents.send('error','Error in auto-updater. ' + err);
+
 })
 // autoUpdater.on('download-progress', (progressObj) => {
 //   let log_message = "Download speed: " + progressObj.bytesPerSecond;
@@ -86,7 +93,9 @@ autoUpdater.on('error', (err) => {
 //   sendStatusToWindow(log_message);
 // })
 autoUpdater.on('update-downloaded', (info) => {
-  sendStatusToWindow('Update downloaded');
+  // sendStatusToWindow('Update downloaded');
+  win.webContents.send('update-downloaded',"Update downloaded");
+
 });
 app.on('ready', function() {
   // Create the Menu
