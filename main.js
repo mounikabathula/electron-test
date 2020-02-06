@@ -70,9 +70,14 @@ function createDefaultWindow() {
 autoUpdater.on('checking-for-update', () => {
   sendStatusToWindow('Checking for update...');
 })
-autoUpdater.on('update-available', (info) => {
-  sendStatusToWindow('Update available.');
-})
+// autoUpdater.on('update-available', (info) => {
+//   sendStatusToWindow('Update available.');
+// })
+autoUpdater.on('update-available', () => {
+  console.log("update available");
+  
+  mainWindow.webContents.send('update_available');
+});
 autoUpdater.on('update-not-available', (info) => {
   sendStatusToWindow('Update not available.');
 })
@@ -85,8 +90,11 @@ autoUpdater.on('error', (err) => {
 //   log_message = log_message + ' (' + progressObj.transferred + "/" + progressObj.total + ')';
 //   sendStatusToWindow(log_message);
 // })
-autoUpdater.on('update-downloaded', (info) => {
-  sendStatusToWindow('Update downloaded');
+// autoUpdater.on('update-downloaded', (info) => {
+//   sendStatusToWindow('Update downloaded');
+// });
+autoUpdater.on('update-downloaded', () => {
+  mainWindow.webContents.send('update_downloaded');
 });
 app.on('ready', function() {
   // Create the Menu
