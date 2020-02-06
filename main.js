@@ -120,6 +120,8 @@ app.on('window-all-closed', () => {
 //-------------------------------------------------------------------
 app.on('ready', function()  {
   autoUpdater.checkForUpdatesAndNotify();
+  console.log("test");
+  
 });
 
 //-------------------------------------------------------------------
