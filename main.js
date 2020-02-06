@@ -124,6 +124,11 @@ app.on('ready', function()  {
   
 });
 
+ipcMain.on('restart_app', () => {
+  autoUpdater.quitAndInstall();
+});
+
+
 //-------------------------------------------------------------------
 // Auto updates - Option 2 - More control
 //
